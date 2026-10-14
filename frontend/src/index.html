@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Laboratorio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔬 Sistema de Inventario de Laboratorio</h1>
+            <p>Control de Equipos | Infraestructura de Servicios</p>
+            <div id="stats" class="badge">
+                Fuente: <span id="source-badge">Cargando...</span> | 
+                Visitas totales (Redis): <span id="counter-badge">0</span>
+            </div>
+        </header>
+
+        <section class="card">
+            <h2>Registrar Nuevo Equipo</h2>
+            <form id="form-equipo">
+                <div class="form-grid">
+                    <input type="text" id="nombre" placeholder="Nombre del Equipo (ej. Osciloscopio)" required>
+                    <input type="text" id="numero_serie" placeholder="Número de Serie (ej. OSC-102)" required>
+                    <input type="text" id="laboratorio" placeholder="Laboratorio (ej. Electrónica)" required>
+                    <select id="estado">
+                        <option value="Operativo">Operativo</option>
+                        <option value="En Mantenimiento">En Mantenimiento</option>
+                        <option value="Baja">Baja</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Registrar Equipo</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="header-list">
+                <h2>Equipos Registrados</h2>
+                <!-- Mejora: Filtro de búsqueda -->
+                <div class="search-box">
+                    <input type="text" id="input-buscar" placeholder="Buscar por nombre o serie...">
+                    <button id="btn-buscar" class="btn btn-secondary">Buscar</button>
+                    <button id="btn-limpiar" class="btn btn-secondary">Limpiar</button>
+                </div>
+            </div>
+
+            <div id="mensaje" class="alert hidden"></div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Nº Serie</th>
+                        <th>Laboratorio</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-equipos">
+                    <!-- Se llena con JS -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
